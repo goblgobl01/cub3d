@@ -5,4 +5,9 @@
 #include <fcntl.h>
 #include "stdio.h"
 
+typedef struct s_struct
+{
+	
+}t_data;
+
 #endif
