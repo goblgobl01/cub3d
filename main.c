@@ -6,7 +6,7 @@
 /*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:06:28 by mmaarafi          #+#    #+#             */
-/*   Updated: 2025/10/17 18:15:23 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/10/17 18:28:37 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,14 +107,21 @@ void	intializing_all_variables(t_data **data)
 {
 	(*data)->map = NULL;
 	(*data)->big_line = NULL;
-	(*data)->player_direction = NULL;
+	(*data)->NO = NULL;
+	(*data)->SO = NULL;
+	(*data)->WE = NULL;
+	(*data)->EA = NULL;
+	(*data)->F = NULL;
+	(*data)->C = NULL;
+	(*data)->player_direction = 0;
 	(*data)->starting_position_x = 0;
 	(*data)->starting_position_y = 0;
 	(*data)->map_height = 0;
 	(*data)->map_width = 0;
+	(*data)->parameters_count = 0;
 }
 
-int check_empty_line(char *ptr)
+int check_empty_lines(char *ptr)
 {
 	int i;
 
@@ -128,12 +135,11 @@ int check_empty_line(char *ptr)
 	return (1);
 }
 
-void initializing_textures_path(int fd, t_data *data)
+void intializing_textures_path(int fd, t_data *data)
 {
 	char	*ptr;
-	int		fd;
-	int		length;
 
+	(void) data;
 	while ((ptr = get_next_line(fd)))
 	{
 		if (check_empty_lines(ptr))
@@ -141,23 +147,23 @@ void initializing_textures_path(int fd, t_data *data)
 			free(ptr);
 			continue ;
 		}
-		else
-		{
+		// else
+		// {
 			
-		}
+		// }
 	}
 }
 
 void reading_map_file(char *str, t_data *data)
 {
-	char	*ptr;
+	// char	*ptr;
 	int		fd;
-	int		length;
+	// int		length;
 
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
 		return (write(2, "Error\n", 6), free(data), exit(1), (void)0);
-	intializing_textures_path(fd);
+	intializing_textures_path(fd, data);
 }
 
 int main(int ac, char **av)
@@ -176,7 +182,7 @@ int main(int ac, char **av)
 		exit(1);
 	}
 	intializing_all_variables(&data);
-	reading_map_file(av[1], &data);
+	reading_map_file(av[1], data);
 }
 
 // prerequisite:
