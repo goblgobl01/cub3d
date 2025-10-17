@@ -6,7 +6,7 @@
 /*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:06:28 by mmaarafi          #+#    #+#             */
-/*   Updated: 2025/10/13 15:55:19 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/10/17 18:15:23 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,20 @@ void	intializing_all_variables(t_data **data)
 	(*data)->map_width = 0;
 }
 
+int check_empty_line(char *ptr)
+{
+	int i;
+
+	i = 0;
+	while(ptr[i])
+	{
+		if (!inside_charset(ptr[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void initializing_textures_path(int fd, t_data *data)
 {
 	char	*ptr;
@@ -122,28 +136,16 @@ void initializing_textures_path(int fd, t_data *data)
 
 	while ((ptr = get_next_line(fd)))
 	{
-		if (*ptr == '\n')
+		if (check_empty_lines(ptr))
 		{
 			free(ptr);
 			continue ;
 		}
 		else
 		{
-			if (count_words(ptr) == 2)
-			{
-				
-			}
-			else
-			{
-				free_everything(data);
-				exit(1);
-			}
+			
 		}
 	}
-	// close(fd);
-	// if (!characters_checking(data->big_line, data))
-	// 	return (write(2, "Error\n", 6), free(data->big_line), 
-	// 		freedata, exit(1), (void)0);
 }
 
 void reading_map_file(char *str, t_data *data)

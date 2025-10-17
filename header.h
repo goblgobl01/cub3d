@@ -13,6 +13,8 @@ typedef struct s_struct
 	char		*SO;
 	char		*WE;
 	char		*EA;
+	char		*F;
+	char		*C;
 	char		player_direction;
 	int			parameters_count;
 	int			starting_position_x;
