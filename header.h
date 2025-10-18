@@ -29,6 +29,8 @@ int		checking_arguments(char *str);
 void	intializing_all_variables(t_data **data);
 void	error_function(char *str, t_data *data);
 void	reading_map_file(char *str, t_data *data);
+void	intializing_textures_path(int fd, t_data *data);
+int		check_empty_lines(char *ptr);
 
 
 #endif
