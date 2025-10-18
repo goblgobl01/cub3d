@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 11:02:10 by mmaarafi          #+#    #+#             */
-/*   Updated: 2025/10/13 11:15:47 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/10/17 17:54:55 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ char		*my_strcat(char *dest, const char *src);
 void		ft_putstr_fd(char *s, int fd);
 char		*my_strchr(const char *s, int c);
 char		*my_strjoin(char *stash, char *buffer);
-char    	*get_next_line(int fd);
+char		*get_next_line(int fd);
+char		**ft_charset_split(char *str, char *charset);
 
 #endif

@@ -53,7 +53,7 @@ LIBFT       = $(LIBFT_DIR)/libft.a
 LIBFT_SRCS  = $(wildcard $(LIBFT_DIR)/*.c)
 
 # --- source files for cub3d ---
-SRCS        = main.c
+SRCS        = main.c parsing.c
 OBJ_SRCS    = $(SRCS:.c=.o)
 
 # ===============================
