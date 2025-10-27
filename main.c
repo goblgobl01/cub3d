@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:06:28 by mmaarafi          #+#    #+#             */
-/*   Updated: 2025/10/18 16:48:57 by codespace        ###   ########.fr       */
+/*   Updated: 2025/10/21 19:40:25 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ int main(int ac, char **av)
 	}
 	intializing_all_variables(&data);
 	reading_map_file(av[1], data);
-	printf("+++++++++++++++++++++++\n");
-	printf("SO: |%s|\n", data->SO);
-	printf("NO: |%s|\n", data->NO);
-	printf("WE: |%s|\n", data->WE);
-	printf("EA: |%s|\n", data->EA);
-	printf("F: |%s|\n", data->F);
-	printf("C: |%s|\n", data->C);
-	printf("map:\n");
-	printf("%s\n", data->big_line);
-	printf("+++++++++++++++++++++++\n");
+	// printf("+++++++++++++++++++++++\n");
+	// printf("SO: |%s|\n", data->SO);
+	// printf("NO: |%s|\n", data->NO);
+	// printf("WE: |%s|\n", data->WE);
+	// printf("EA: |%s|\n", data->EA);
+	// printf("F: |%s|\n", data->F);
+	// printf("C: |%s|\n", data->C);
+	// printf("map:\n");
+	// printf("%s\n", data->big_line);
+	// printf("+++++++++++++++++++++++\n");
 }
 
 // ===== first elements ====

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 11:02:10 by mmaarafi          #+#    #+#             */
-/*   Updated: 2025/10/17 17:54:55 by codespace        ###   ########.fr       */
+/*   Updated: 2025/10/21 18:53:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -68,5 +69,7 @@ char		*my_strchr(const char *s, int c);
 char		*my_strjoin(char *stash, char *buffer);
 char		*get_next_line(int fd);
 char		**ft_charset_split(char *str, char *charset);
+int			ft_atoi_improved(const char *str, int *flag);
+char		**another_split(char *str, char *charset);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 14:41:04 by codespace         #+#    #+#             */
-/*   Updated: 2025/10/18 19:00:08 by codespace        ###   ########.fr       */
+/*   Updated: 2025/10/21 19:53:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,6 @@ void parse_the_map(int fd,t_data *data)
 		ptr = get_next_line(fd);
 		if (!ptr)
 			break ;
-		// if (check_empty_lines(ptr)) //ojdajl;adk
-		// {
-		// 	free(ptr);
-		// 	error_function("Error\n map shouldn't contain empty lines\n", data);
-		// }
 	}
 	close (fd);
 	if (!characters_checking(data->big_line, data))
@@ -136,14 +131,17 @@ void	locating_player_position(t_data *data)
 	}
 }
 
-void checking_map_walls(t_data *data)
+void checking_map(t_data *data)
 {
-	int	y;
-	int	x;
+	unsigned int	y;
+	unsigned int	x;
 
 	y = 0;
 	while (data->map[y])
 	{
+		printf("%s\n", data->map[y]);
+		if (*data->map[y] == 0)
+			error_function("Error\n this map error\n", data);
 		x = 0;
 		while (data->map[y][x])
 		{
@@ -151,22 +149,26 @@ void checking_map_walls(t_data *data)
 				 || data->map[y][x] == 'E' || data->map[y][x] == 'W'
 				 || data->map[y][x] == '0')
 			{
+				if (x == 0 || y == 0)
+					error_function("Error\n map error\n", data);
+				if (y == data->map_height)
+					error_function("Error\n map error\n",data);
 				if (data->map[y][x + 1] != '0' && data->map[y][x + 1] != '1'
 					&& data->map[y][x + 1] != 'N' && data->map[y][x + 1] != 'S'
 					&& data->map[y][x + 1] != 'E' && data->map[y][x + 1] != 'W')
-					error_function("Error\n map error\n", data);
+					error_function("Error\n map error1\n", data);
 				if (data->map[y][x - 1] != '0' && data->map[y][x - 1] != '1'
 					&& data->map[y][x - 1] != 'N' && data->map[y][x - 1] != 'S'
 					&& data->map[y][x - 1] != 'E' && data->map[y][x - 1] != 'W')
-					error_function("Error\n map error\n", data);
-				if (data->map[y + 1][x] != '0' && data->map[y + 1][x] != '1'
+					error_function("Error\n map error2\n", data);
+				if ((x > ft_strlen(data->map[y + 1])) || (data->map[y + 1][x] != '0' && data->map[y + 1][x] != '1'
 					&& data->map[y + 1][x] != 'N' && data->map[y + 1][x] != 'S'
-					&& data->map[y + 1][x] != 'E' && data->map[y + 1][x] != 'W')
-					error_function("Error\n map error\n", data);
-				if (data->map[y - 1][x] != '0' && data->map[y - 1][x] != '1'
+					&& data->map[y + 1][x] != 'E' && data->map[y + 1][x] != 'W'))
+					error_function("Error\n map error3\n", data);
+				if ((x > ft_strlen(data->map[y - 1])) || (data->map[y - 1][x] != '0' && data->map[y - 1][x] != '1'
 					&& data->map[y - 1][x] != 'N' && data->map[y - 1][x] != 'S'
-					&& data->map[y - 1][x] != 'E' && data->map[y - 1][x] != 'W')
-					error_function("Error\n map error\n", data);
+					&& data->map[y - 1][x] != 'E' && data->map[y - 1][x] != 'W'))
+					error_function("Error\n map error4\n", data);
 			}
 			x++;
 		}
@@ -174,27 +176,36 @@ void checking_map_walls(t_data *data)
 	}
 }
 
+int	calculating_map_height(char **map)
+{
+	int	i;
+
+	i = 0;
+	while(map[i])
+		i++;
+	return (i);
+}
+
 void	map_checking(t_data *data)
 {
-	data->map = ft_split(data->big_line, '\n');
+	data->map = another_split(data->big_line, "\n");
 	if (!(data->map))
 		error_function("Error\n map_checking\n", data);
 	if (data->player_count != 1)
 		error_function("Error\n must have only one player\n", data);
+	data->map_height = calculating_map_height(data->map);
 	locating_player_position(data);
-	checking_map_walls(data);
+	checking_map(data);
 }
 
 void reading_map_file(char *str, t_data *data)
 {
-	// char	*ptr;
 	int		fd;
-	// int		length;
 
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
 		return (write(2, "Error\n", 6), free(data), exit(1), (void)0);
 	intializing_textures_path(fd, data);
 	parse_the_map(fd, data);
-	// map_checking(data);
+	map_checking(data);
 }

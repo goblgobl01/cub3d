@@ -42,7 +42,7 @@
 
 NAME        = cub3d
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g
+CFLAGS      = -Wall -Wextra -Werror 
 RM          = rm -f
 
 HEADER      = ./header.h

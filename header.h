@@ -7,21 +7,20 @@
 
 typedef struct s_struct
 {
-	char		**map;
-	char		*big_line;
-	char		*NO;
-	char		*SO;
-	char		*WE;
-	char		*EA;
-	char		*F;
-	char		*C;
-	char		player_direction;
-	int			parameters_count;
-	int			player_count;
-	int			starting_position_x;
-	int			starting_position_y;
-	int			map_height;
-	int			map_width;
+	char			**map;
+	char			*big_line;
+	char			*NO;
+	char			*SO;
+	char			*WE;
+	char			*EA;
+	char			*F;
+	char			*C;
+	char			player_direction;
+	int				parameters_count;
+	int				player_count;
+	int				starting_position_x;
+	int				starting_position_y;
+	unsigned int	map_height;
 }t_data;
 
 void	free_everything(t_data *data);

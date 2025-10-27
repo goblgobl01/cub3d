@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 18:41:23 by codespace         #+#    #+#             */
-/*   Updated: 2025/10/18 18:49:11 by codespace        ###   ########.fr       */
+/*   Updated: 2025/10/21 19:37:27 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,6 @@ void	intializing_all_variables(t_data **data)
 	(*data)->starting_position_x = 0;
 	(*data)->starting_position_y = 0;
 	(*data)->map_height = 0;
-	(*data)->map_width = 0;
 	(*data)->parameters_count = 0;
 }
 void check_texture(char *str, t_data *data)
@@ -162,17 +161,28 @@ void check_rgb_values(char *str, t_data *data)
 	int		length;
 	int		i;
 	int		value;
-
-	args = ft_charset_split(str, ",");
+	int		flag;
+ 
+	flag = 0;
+	args = another_split(str, ",");
+	i = 0;
+	// while(args[i])
+	// {
+	// 	printf("%s\n",args[i]);
+	// 	i++;
+	// }
+	// printf("this is str: %s\n", str);
 	length = args_length(args);
+	// printf("length : %d\n", length);
 	if (length != 3)
 		error_function("Error\n invalid rgb: should have only 3 values\n", data);
 	i = 0;
 	while(args[i])
 	{
-		value = ft_atoi(args[i]);
-		if (value > 255 || value < 0)
-			error_function("Error\n invalid rgb: values should be between 0 and 255\n", data);
+		value = ft_atoi_improved(args[i], &flag);
+		// printf("value : %d\n", value);
+		if ((value > 255 || value < 0))
+			error_function("Error\n invalid rgb: values should be between 0 and 255->1\n", data);
 		i++;
 	}
 }
@@ -232,7 +242,7 @@ void	intializing_textures_path(int fd, t_data *data)
 	int		word_count;
 
 	(void) data;
-	while ((ptr = get_next_line(fd)) && data->parameters_count != 6)
+	while ((ptr = get_next_line(fd)))
 	{
 		if (check_empty_lines(ptr))
 		{
@@ -247,6 +257,8 @@ void	intializing_textures_path(int fd, t_data *data)
 			check_first_letters_and_assign(ptr, data);
 		}
 		free(ptr);
+		if (data->parameters_count == 6)
+			break ;
 	}
 	check_path_and_rgb_values(data);
 }
