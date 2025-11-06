@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 14:41:04 by codespace         #+#    #+#             */
-/*   Updated: 2025/10/21 19:53:22 by codespace        ###   ########.fr       */
+/*   Updated: 2025/11/06 11:20:46 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,4 +208,5 @@ void reading_map_file(char *str, t_data *data)
 	intializing_textures_path(fd, data);
 	parse_the_map(fd, data);
 	map_checking(data);
+	raycasting(data);
 }
