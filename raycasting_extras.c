@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 06:19:24 by codespace         #+#    #+#             */
-/*   Updated: 2025/11/06 11:21:17 by codespace        ###   ########.fr       */
+/*   Updated: 2025/11/11 16:23:11 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ void	intializing_raycasting_variables(t_data *data)
 		data->plane_x = 0;
 		data->plane_y = -0.66;
 	}
-	data->position_x = data->starting_position_x + 0,5;
-	data->position_x = data->starting_position_y + 0,5;
+	data->position_x = data->starting_position_x + 0.5;
+	data->position_y = data->starting_position_y + 0.5;
 }

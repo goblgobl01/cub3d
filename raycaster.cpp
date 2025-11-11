@@ -157,19 +157,9 @@ int main(int /*argc*/, char */*argv*/[])
         //Check if ray has hit a wall
         if(worldMap[mapX][mapY] > 0) hit = 1;
       }
-      //Calculate distance projected on camera direction. This is the shortest distance from the point where the wall is
-      //hit to the camera plane. Euclidean to center camera point would give fisheye effect!
-      //This can be computed as (mapX - posX + (1 - stepX) / 2) / rayDirX for side == 0, or same formula with Y
-      //for size == 1, but can be simplified to the code below thanks to how sideDist and deltaDist are computed:
-      //because they were left scaled to |rayDir|. sideDist is the entire length of the ray above after the multiple
-      //steps, but we subtract deltaDist once because one step more into the wall was taken above.
       if(side == 0) perpWallDist = (sideDistX - deltaDistX);
       else          perpWallDist = (sideDistY - deltaDistY);
-
-      //Calculate height of line to draw on screen
       int lineHeight = (int)(h / perpWallDist);
-
-      //calculate lowest and highest pixel to fill in current stripe
       int drawStart = -lineHeight / 2 + h / 2;
       if(drawStart < 0) drawStart = 0;
       int drawEnd = lineHeight / 2 + h / 2;

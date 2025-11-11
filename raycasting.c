@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 00:54:33 by codespace         #+#    #+#             */
-/*   Updated: 2025/11/06 15:22:09 by codespace        ###   ########.fr       */
+/*   Updated: 2025/11/11 16:18:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void raycasting(t_data *data)
 		x = 0;
 		while(x < screenWidth)
 		{
-			data->camera_x = 2 * x / (double) screenHeight - 1;
+			data->camera_x = 2 * x / (double) screenWidth - 1;
 			data->ray_dir_x = data->dir_x + data->plane_x * data->camera_x;
 			data->ray_dir_y = data->dir_y + data->plane_y * data->camera_x;
 			data->map_x = data->starting_position_x;
@@ -29,11 +29,11 @@ void raycasting(t_data *data)
 			if (data->ray_dir_x == 0)
 				data->delta_dist_x = 1e30;
 			else
-				data->delta_dist_x = abs(1/data->ray_dir_x);
+				data->delta_dist_x = fabs(1/data->ray_dir_x);
 			if (data->ray_dir_y == 0)
 				data->delta_dist_y = 1e30;
 			else
-				data->delta_dist_y = abs(1/data->ray_dir_y);
+				data->delta_dist_y = fabs(1/data->ray_dir_y);
 			data->hit = 0;
 			if (data->ray_dir_x < 0)
 			{
@@ -44,27 +44,20 @@ void raycasting(t_data *data)
 			{
 				data->step_x= 1;
 				data->side_dist_x = (data->map_x + 1 - data->position_x) * data->delta_dist_x;
-				// stepX = 1;
-				// sideDistX = (mapX + 1.0 - posX) * deltaDistX;
 			}
 			if (data->ray_dir_y < 0)
 			{
 				data->step_y= -1;
-				data->side_dist_x = (data->position_y - data->map_y) * data->delta_dist_y;
-				// stepY = -1;
-				// sideDistY = (posY - mapY) * deltaDistY;
+				data->side_dist_y = (data->position_y - data->map_y) * data->delta_dist_y;
 			}
 			else
 			{
 				data->step_y = 1;
-				data->side_dist_y = (data->map_y + 1 - data->position_y) * data->delta_dist_x;
-				// stepY = 1;
-				// sideDistY = (mapY + 1.0 - posY) * deltaDistY;
+				data->side_dist_y = (data->map_y + 1 - data->position_y) * data->delta_dist_y;
 			}
 			while (data->hit == 0)
 			{
-				//jump to next map square, either in x-direction, or in y-direction
-				if (data->side_dist_x < data->delta_dist_y)
+				if (data->side_dist_x < data->side_dist_y)
 				{
 					data->side_dist_x += data->delta_dist_x;
 					data->map_x += data->step_x;
@@ -76,8 +69,7 @@ void raycasting(t_data *data)
 					data->map_y += data->step_y;
 					data->side = 1;
 				}
-				//Check if ray has hit a wall
-				if (data->map[data->map_y][data->map_x] != 0)
+				if (data->map[data->map_y][data->map_x] != '0')
 					data->hit = 1;
 			}
 			if(data->side == 0)
