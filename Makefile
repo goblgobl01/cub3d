@@ -1,103 +1,3 @@
-# NAME = cub3D
-
-# HEADER      = ./header.h
-
-# LIBFT_DIR   = ./includes/libft
-# LIBFT       = $(LIBFT_DIR)/libft.a
-# LIBFT_SRCS  = $(wildcard $(LIBFT_DIR)/*.c)
-# SRC = main.c  parsing.c raycasting.c rendering.c parsing_extras.c raycasting_extras.c
-# OBJ = $(SRC:.c=.o)
-# CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g -I. -IMLX42/include
-# CC = cc 
-# MLX=./MLX42/build/libmlx42.a
-# LFLAGS := -framework Cocoa -framework OpenGL -framework IOKit -L ~/.brew/opt/glfw/lib -l glfw3
-# RED=\033[0;31m
-# GRN=\033[0;32m
-# YEL=\033[1;33m
-# ORANGE= \033[38;5;208m
-# RESET=\033[0m
-
-# all: $(NAME)
-# $(NAME): $(OBJ) $(HDR)  
-#     @if find . -name "libmlx42.a" | grep -q .;then\
-#         echo "$(GRN)mlx exist$(RESET)";\
-#     else\
-#         echo "$(YEL)MLX42 not found, setuping it...$(RESET)";\
-#         rm -rf MLX42;\
-#         git clone https://github.com/codam-coding-college/MLX42.git ;\
-#         cd MLX42 && cmake -B build && cmake --build build;\
-#         cd -;\
-#         fi
-
-#     $(CC) $(CFLAGS)   $(MLX) $(LFLAGS) $(OBJ) -o $(NAME)
-
-# $(LIBFT): $(LIBFT_SRCS)
-# 	@$(MAKE) -C $(LIBFT_DIR)
-
-# clean: 
-# 	@$(MAKE) clean -C $(LIBFT_DIR)
-#     rm -rf $(OBJ)
-
-# fclean: clean
-# 	@$(MAKE) fclean -C $(LIBFT_DIR)
-#     rm -rf $(NAME)
-
-# re: fclean all
-
-# .PHONY: clean
-
-# NAME        = cub3D
-
-# HEADER      = ./header.h
-
-# LIBFT_DIR   = ./includes/libft
-# LIBFT       = $(LIBFT_DIR)/libft.a
-# LIBFT_SRCS  = $(wildcard $(LIBFT_DIR)/*.c)
-
-# SRC         = main.c parsing.c raycasting.c rendering.c parsing_extras.c raycasting_extras.c
-# OBJ         = $(SRC:.c=.o)
-
-# CFLAGS      = -Wall -Wextra -Werror -fsanitize=address -g -I. -IMLX42/include
-# CC          = cc
-
-# MLX         = ./MLX42/build/libmlx42.a
-# LFLAGS      = -framework Cocoa -framework OpenGL -framework IOKit \
-#               -L ~/.brew/opt/glfw/lib -lglfw
-
-# RED         = \033[0;31m
-# GRN         = \033[0;32m
-# YEL         = \033[1;33m
-# RESET       = \033[0m
-
-# all: $(NAME)
-
-# $(NAME): $(OBJ) $(HEADER)
-# 	@if find . -name "libmlx42.a" | grep -q .; then \
-# 		echo "$(GRN)mlx found$(RESET)"; \
-# 	else \
-# 		echo "$(YEL)MLX42 not found, setting it up...$(RESET)"; \
-# 		rm -rf MLX42; \
-# 		git clone https://github.com/codam-coding-college/MLX42.git; \
-# 		cd MLX42 && cmake -B build && cmake --build build; \
-# 	fi
-# 	$(CC) $(CFLAGS) $(OBJ) $(MLX) $(LFLAGS) -o $(NAME)
-
-# $(LIBFT): $(LIBFT_SRCS)
-# 	@$(MAKE) -C $(LIBFT_DIR)
-
-# clean:
-# 	@$(MAKE) clean -C $(LIBFT_DIR)
-# 	rm -rf $(OBJ)
-
-# fclean: clean
-# 	@$(MAKE) fclean -C $(LIBFT_DIR)
-# 	rm -rf $(NAME)
-
-# re: fclean all
-
-# .PHONY: clean fclean re all
-
-
 NAME        = cub3D
 
 HEADER      = ./header.h
@@ -124,7 +24,7 @@ RESET       = \033[0m
 all: $(NAME)
 
 # Build cub3D
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(OBJ) $(LIBFT) header.h
 	@if find . -name "libmlx42.a" | grep -q .; then \
 		echo "$(GRN)mlx found$(RESET)"; \
 	else \
