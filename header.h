@@ -7,8 +7,9 @@
 #include <math.h>
 #include <limits.h>
 #include <float.h>
-#define screenWidth 640
-#define screenHeight 480
+#include "MLX42/include/MLX42/MLX42.h"
+#define screenWidth 1920
+#define screenHeight 1080
 
 typedef struct s_struct
 {
@@ -46,6 +47,11 @@ typedef struct s_struct
 	int				hit;
 	int				side;
 	unsigned int	map_height;
+	int				draw_start;
+	int				draw_end;
+	int				line_height;
+	mlx_image_t		*img;
+	mlx_t			*mlx;
 }t_data;
 
 void	free_everything(t_data *data);
@@ -57,6 +63,10 @@ void	intializing_textures_path(int fd, t_data *data);
 int		check_empty_lines(char *ptr);
 void	raycasting(t_data *data);
 void	intializing_raycasting_variables(t_data *data);
+void    wall_height(t_data    *data);
+void    ceiling(t_data *data, int x);
+void    wall(t_data *data, int x);
+void    floor_r(t_data *data, int x);
 
 
 #endif

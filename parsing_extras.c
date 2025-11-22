@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_extras.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 18:41:23 by codespace         #+#    #+#             */
-/*   Updated: 2025/10/21 19:37:27 by codespace        ###   ########.fr       */
+/*   Updated: 2025/11/20 22:42:44 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ void	intializing_all_variables(t_data **data)
 	(*data)->starting_position_y = 0;
 	(*data)->map_height = 0;
 	(*data)->parameters_count = 0;
+	(*data)->player_count = 0;
 }
 void check_texture(char *str, t_data *data)
 {

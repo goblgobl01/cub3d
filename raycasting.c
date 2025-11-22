@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 00:54:33 by codespace         #+#    #+#             */
-/*   Updated: 2025/11/11 17:11:19 by codespace        ###   ########.fr       */
+/*   Updated: 2025/11/21 19:09:03 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,34 +54,39 @@ void raycasting(t_data *data)
 {
 	int	x;
 	intializing_raycasting_variables(data);
-	while(1 /* here in case of one it would be depending on the which frame */)
+	x = 0;
+	// printf("sc");
+	while(x < screenWidth)
 	{
-		x = 0;
-		while(x < screenWidth)
+		initialize_parameters(x, data);
+		while (data->hit == 0)
 		{
-			initialize_parameters(x, data);
-			while (data->hit == 0)
+			if (data->side_dist_x < data->side_dist_y)
 			{
-				if (data->side_dist_x < data->side_dist_y)
-				{
-					data->side_dist_x += data->delta_dist_x;
-					data->map_x += data->step_x;
-					data->side = 0;
-				}
-				else
-				{
-					data->side_dist_y += data->delta_dist_y;
-					data->map_y += data->step_y;
-					data->side = 1;
-				}
-				if (data->map[data->map_y][data->map_x] != '0')
-					data->hit = 1;
+				data->side_dist_x += data->delta_dist_x;
+				data->map_x += data->step_x;
+				data->side = 0;
 			}
-			if(data->side == 0)
-				data->perp_wall_dist = (data->side_dist_x - data->delta_dist_x);
 			else
-				data->perp_wall_dist = (data->side_dist_y - data->delta_dist_y);
-			x++;
+			{
+				data->side_dist_y += data->delta_dist_y;
+				data->map_y += data->step_y;
+				data->side = 1;
+			}
+			if (data->map[data->map_y][data->map_x] != '0')
+				data->hit = 1;
 		}
+		if(data->side == 0)
+			data->perp_wall_dist = (data->side_dist_x - data->delta_dist_x);
+		else
+			data->perp_wall_dist = (data->side_dist_y - data->delta_dist_y);
+		wall_height(data);
+		ceiling(data, x);
+		wall(data, x);
+		floor_r(data, x);
+		printf("rays distant: %f\n", data->perp_wall_dist);
+		x++;
 	}
+	// printf("end x ->%d s w  %d\n", x, screenWidth);
+	mlx_image_to_window(data->mlx, data->img, 0 , 0);
 }

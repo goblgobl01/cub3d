@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 14:41:04 by codespace         #+#    #+#             */
-/*   Updated: 2025/11/06 11:20:46 by codespace        ###   ########.fr       */
+/*   Updated: 2025/11/21 02:09:03 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,6 @@ void checking_map(t_data *data)
 	y = 0;
 	while (data->map[y])
 	{
-		printf("%s\n", data->map[y]);
 		if (*data->map[y] == 0)
 			error_function("Error\n this map error\n", data);
 		x = 0;
