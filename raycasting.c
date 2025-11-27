@@ -12,6 +12,32 @@
 
 #include "header.h"
 
+// function added by youssef:
+void print_wall(t_data *data, int x)
+{
+    //if (data->perp_wall_dist <= 0.01)
+    //    data->perp_wall_dist = 0.01;
+
+    int nearness = (int)(screenHeight / data->perp_wall_dist);
+
+    int start = (screenHeight - nearness) / 2;
+    int end   = start + nearness;
+
+    //if (start < 0) start = 0;
+    if (end > screenHeight) end = screenHeight;
+
+    int i = 0;
+
+    while (i < start)
+        mlx_put_pixel(data->img, x, i++, 0x0000FFFF);
+
+    while (i < end)
+        mlx_put_pixel(data->img, x, i++, 0x90E0FF);
+
+    while (i < screenHeight)
+        mlx_put_pixel(data->img, x, i++, 0x00FF00FF);
+}
+
 void initialize_parameters(int x, t_data *data)
 {
 	data->camera_x = 2 * x / (double) screenWidth - 1;
@@ -53,7 +79,8 @@ void initialize_parameters(int x, t_data *data)
 void raycasting(t_data *data)
 {
 	int	x;
-	intializing_raycasting_variables(data);
+	// line deleted by youssef:
+	// intializing_raycasting_variables(data);
 	x = 0;
 	// printf("sc");
 	while(x < screenWidth)
@@ -80,10 +107,12 @@ void raycasting(t_data *data)
 			data->perp_wall_dist = (data->side_dist_x - data->delta_dist_x);
 		else
 			data->perp_wall_dist = (data->side_dist_y - data->delta_dist_y);
-		wall_height(data);
-		ceiling(data, x);
-		wall(data, x);
-		floor_r(data, x);
+		// wall_height(data);
+		// ceiling(data, x);
+		// wall(data, x);
+		// floor_r(data, x);
+		// line added by youssef:
+		print_wall(data, x);
 		printf("rays distant: %f\n", data->perp_wall_dist);
 		x++;
 	}

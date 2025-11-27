@@ -12,6 +12,27 @@
 
 #include "header.h"
 
+// function added by youssef:
+void move(mlx_key_data_t keydata, void *param)
+{
+    t_data *data = param;
+
+    if (keydata.key == MLX_KEY_W)
+        data->position_y -= 0.1;
+    if (keydata.key == MLX_KEY_S)
+        data->position_y += 0.1;
+    if (keydata.key == MLX_KEY_A)
+        data->position_x -= 0.1;
+    if (keydata.key == MLX_KEY_D)
+        data->position_x += 0.1;
+}
+
+// function added by youssef:
+void raycasting_wrapper(void *param)
+{
+    raycasting((t_data *)param);
+}
+
 int main(int ac, char **av)
 {
 	t_data	*data;
@@ -29,6 +50,10 @@ int main(int ac, char **av)
 	}
 	intializing_all_variables(&data);
 	reading_map_file(av[1], data);
+	// line added by youssef:
+	mlx_key_hook(data->mlx, move, data);
+	// line added by youssef:
+	mlx_loop_hook(data->mlx, raycasting_wrapper, data);
 	mlx_loop(data->mlx);
 	// printf("+++++++++++++++++++++++\n");
 	// printf("SO: |%s|\n", data->SO);

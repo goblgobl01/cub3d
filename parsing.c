@@ -207,5 +207,7 @@ void reading_map_file(char *str, t_data *data)
 	intializing_textures_path(fd, data);
 	parse_the_map(fd, data);
 	map_checking(data);
+	// line added by youssef:
+	intializing_raycasting_variables(data);
 	raycasting(data);
 }
