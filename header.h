@@ -67,6 +67,6 @@ void	wall_height(t_data *data);
 void	ceiling(t_data *data, int x);
 void	wall(t_data *data, int x);
 void	floor_r(t_data *data, int x);
-
-
+void	debug_view(t_data *data);
+void	initialize_parameters(int x, t_data *data);
 #endif

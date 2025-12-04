@@ -6,37 +6,37 @@
 /*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 00:54:33 by codespace         #+#    #+#             */
-/*   Updated: 2025/11/21 19:09:03 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:45:31 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
 // function added by youssef:
-void print_wall(t_data *data, int x)
-{
-    //if (data->perp_wall_dist <= 0.01)
-    //    data->perp_wall_dist = 0.01;
+// void print_wall(t_data *data, int x)
+// {
+//     //if (data->perp_wall_dist <= 0.01)
+//     //    data->perp_wall_dist = 0.01;
 
-    int nearness = (int)(screenHeight / data->perp_wall_dist);
+//     int nearness = (int)(screenHeight / data->perp_wall_dist);
 
-    int start = (screenHeight - nearness) / 2;
-    int end   = start + nearness;
+//     int start = (screenHeight - nearness) / 2;
+//     int end   = start + nearness;
 
-    //if (start < 0) start = 0;
-    if (end > screenHeight) end = screenHeight;
+//     //if (start < 0) start = 0;
+//     if (end > screenHeight) end = screenHeight;
 
-    int i = 0;
+//     int i = 0;
 
-    while (i < start)
-        mlx_put_pixel(data->img, x, i++, 0x0000FFFF);
+//     while (i < start)
+//         mlx_put_pixel(data->img, x, i++, 0x0000FFFF);
 
-    while (i < end)
-        mlx_put_pixel(data->img, x, i++, 0x90E0FF);
+//     while (i < end)
+//         mlx_put_pixel(data->img, x, i++, 0x90E0FF);
 
-    while (i < screenHeight)
-        mlx_put_pixel(data->img, x, i++, 0x00FF00FF);
-}
+//     while (i < screenHeight)
+//         mlx_put_pixel(data->img, x, i++, 0x00FF00FF);
+// }
 
 void initialize_parameters(int x, t_data *data)
 {
@@ -112,7 +112,7 @@ void raycasting(t_data *data)
 		// wall(data, x);
 		// floor_r(data, x);
 		// line added by youssef:
-		print_wall(data, x);
+		// print_wall(data, x);
 		printf("rays distant: %f\n", data->perp_wall_dist);
 		x++;
 	}
