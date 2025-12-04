@@ -25,13 +25,15 @@ void move(mlx_key_data_t keydata, void *param)
         data->position_x -= 0.1;
     if (keydata.key == MLX_KEY_D)
         data->position_x += 0.1;
+	// if (data->position_x data->map[x][y])
+	raycasting((t_data *)param);
 }
 
 // function added by youssef:
-void raycasting_wrapper(void *param)
-{
-    raycasting((t_data *)param);
-}
+// void raycasting_wrapper(void *param)
+// {
+//     raycasting((t_data *)param);
+// }
 
 int main(int ac, char **av)
 {
@@ -53,7 +55,7 @@ int main(int ac, char **av)
 	// line added by youssef:
 	mlx_key_hook(data->mlx, move, data);
 	// line added by youssef:
-	mlx_loop_hook(data->mlx, raycasting_wrapper, data);
+	// mlx_loop_hook(data->mlx, raycasting_wrapper, data);
 	mlx_loop(data->mlx);
 	// printf("+++++++++++++++++++++++\n");
 	// printf("SO: |%s|\n", data->SO);

@@ -8,8 +8,8 @@
 #include <limits.h>
 #include <float.h>
 #include "MLX42/include/MLX42/MLX42.h"
-#define screenWidth 1920
-#define screenHeight 1080
+#define screenWidth 1000
+#define screenHeight 1000
 
 typedef struct s_struct
 {
