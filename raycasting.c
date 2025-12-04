@@ -6,45 +6,45 @@
 /*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 00:54:33 by codespace         #+#    #+#             */
-/*   Updated: 2025/12/04 16:45:31 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/12/04 18:15:08 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
 // function added by youssef:
-// void print_wall(t_data *data, int x)
-// {
-//     //if (data->perp_wall_dist <= 0.01)
-//     //    data->perp_wall_dist = 0.01;
+void print_wall(t_data *data, int x)
+{
+    //if (data->perp_wall_dist <= 0.01)
+    //    data->perp_wall_dist = 0.01;
 
-//     int nearness = (int)(screenHeight / data->perp_wall_dist);
+    int nearness = (int)(screenHeight / data->perp_wall_dist);
 
-//     int start = (screenHeight - nearness) / 2;
-//     int end   = start + nearness;
+    int start = (screenHeight - nearness) / 2;
+    int end   = start + nearness;
 
-//     //if (start < 0) start = 0;
-//     if (end > screenHeight) end = screenHeight;
+    //if (start < 0) start = 0;
+    if (end > screenHeight) end = screenHeight;
 
-//     int i = 0;
+    int i = 0;
 
-//     while (i < start)
-//         mlx_put_pixel(data->img, x, i++, 0x0000FFFF);
+    while (i < start)
+        mlx_put_pixel(data->img, x, i++, 0x0000FFFF);
 
-//     while (i < end)
-//         mlx_put_pixel(data->img, x, i++, 0x90E0FF);
+    while (i < end)
+        mlx_put_pixel(data->img, x, i++, 0x90E0FF);
 
-//     while (i < screenHeight)
-//         mlx_put_pixel(data->img, x, i++, 0x00FF00FF);
-// }
+    while (i < screenHeight)
+        mlx_put_pixel(data->img, x, i++, 0x00FF00FF);
+}
 
 void initialize_parameters(int x, t_data *data)
 {
 	data->camera_x = 2 * x / (double) screenWidth - 1;
 	data->ray_dir_x = data->dir_x + data->plane_x * data->camera_x;
 	data->ray_dir_y = data->dir_y + data->plane_y * data->camera_x;
-	data->map_x = data->starting_position_x;
-	data->map_y = data->starting_position_y;
+	data->map_x = (int)data->position_x;
+	data->map_y = (int)data->position_y;
 	if (data->ray_dir_x == 0)
 		data->delta_dist_x = 1e30;
 	else
@@ -101,7 +101,11 @@ void raycasting(t_data *data)
 				data->side = 1;
 			}
 			if (data->map[data->map_y][data->map_x] != '0')
+			{
+				// usleep(10000);
+				// printf("x is: %d\ny is: %d\nsquare content: %c\nray: %d\n",data->map_x, data->map_y, data->map[data->map_y][data->map_x], x);
 				data->hit = 1;
+			}
 		}
 		if(data->side == 0)
 			data->perp_wall_dist = (data->side_dist_x - data->delta_dist_x);
@@ -112,10 +116,11 @@ void raycasting(t_data *data)
 		// wall(data, x);
 		// floor_r(data, x);
 		// line added by youssef:
-		// print_wall(data, x);
-		printf("rays distant: %f\n", data->perp_wall_dist);
+		print_wall(data, x);
+		// printf("rays distant: %f and this is x: %d\n", data->perp_wall_dist,);
 		x++;
 	}
+	// printf("====================\n");
 	// printf("end x ->%d s w  %d\n", x, screenWidth);
 	mlx_image_to_window(data->mlx, data->img, 0 , 0);
 }

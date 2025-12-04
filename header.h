@@ -7,6 +7,7 @@
 #include <math.h>
 #include <limits.h>
 #include <float.h>
+#include <unistd.h>
 #include "MLX42/include/MLX42/MLX42.h"
 #define screenWidth 1000
 #define screenHeight 1000
@@ -52,6 +53,7 @@ typedef struct s_struct
 	int				line_height;
 	mlx_image_t		*img;
 	mlx_t			*mlx;
+	FILE			*fptr;
 }t_data;
 
 void	free_everything(t_data *data);
