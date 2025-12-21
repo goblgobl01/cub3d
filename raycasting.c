@@ -6,7 +6,7 @@
 /*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 00:54:33 by codespace         #+#    #+#             */
-/*   Updated: 2025/12/04 18:15:08 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/12/04 18:31:01 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 // function added by youssef:
 void print_wall(t_data *data, int x)
 {
-    //if (data->perp_wall_dist <= 0.01)
-    //    data->perp_wall_dist = 0.01;
-
     int nearness = (int)(screenHeight / data->perp_wall_dist);
 
     int start = (screenHeight - nearness) / 2;
