@@ -54,6 +54,14 @@ typedef struct s_struct
 	mlx_image_t		*img;
 	mlx_t			*mlx;
 	FILE			*fptr;
+	// lines added by youssef:
+	mlx_texture_t	*NO_Texture;
+	mlx_texture_t	*SO_Texture;
+	mlx_texture_t	*WE_Texture;
+	mlx_texture_t	*EA_Texture;
+	mlx_texture_t	*Texture;
+	int				tex_x;
+	int				tex_y;
 }t_data;
 
 void	free_everything(t_data *data);

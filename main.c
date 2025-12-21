@@ -100,4 +100,9 @@ int main(int ac, char **av)
 	// line added by youssef:
 	// mlx_loop_hook(data->mlx, raycasting_wrapper, data);
 	mlx_loop(data->mlx);
+	// lines added by youssef:
+	mlx_delete_texture(data->NO_Texture);
+	mlx_delete_texture(data->SO_Texture);
+	mlx_delete_texture(data->WE_Texture);
+	mlx_delete_texture(data->EA_Texture);
 }
