@@ -6,7 +6,7 @@ LIBFT_DIR   = ./includes/libft
 LIBFT       = $(LIBFT_DIR)/libft.a
 LIBFT_SRCS  = $(wildcard $(LIBFT_DIR)/*.c)
 
-SRC         = main.c parsing.c raycasting.c rendering.c parsing_extras.c raycasting_extras.c movement.c
+SRC         = main.c parsing.c raycasting.c rendering.c parsing_extras.c raycasting_extras.c movement.c leaks.c
 OBJ         = $(SRC:.c=.o)
 
 CFLAGS      = -Wall -Wextra -Werror -I. -IMLX42/include #-fsanitize=address -g 

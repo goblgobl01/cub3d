@@ -83,5 +83,6 @@ void		move(void *param);
 void		print_wall(t_data *data, int x);
 void		calculating_tex_x(t_data *data);
 uint32_t	get_pixel(t_data *data, int x, int y);
+void		leaks(t_data *data);
 
 #endif
