@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_extras.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 18:41:23 by codespace         #+#    #+#             */
-/*   Updated: 2025/12/22 10:09:44 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/12/22 14:00:25 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	free_everything(t_data *data)
 		free (data->F);
 	if (data->C)
 		free (data->C);
+	if (data->map_fd != -1)
+		close(data->map_fd);
 	if (data)
 		free(data);
 }
@@ -134,6 +136,7 @@ void	intializing_all_variables(t_data **data)
 	(*data)->map_height = 0;
 	(*data)->parameters_count = 0;
 	(*data)->player_count = 0;
+	(*data)->map_fd = -1;
 }
 void check_texture(char *str, t_data *data)
 {
@@ -156,6 +159,19 @@ int args_length(char **args)
 	return (i);
 }
 
+void free_args(int length, char **args)
+{
+	int i;
+
+	i = 0;
+	while (i < length)
+	{
+		free(args[i]);
+		i++;
+	}
+	free(args);
+}
+
 void check_rgb_values(char *str, t_data *data)
 {
 	char	**args;
@@ -169,15 +185,22 @@ void check_rgb_values(char *str, t_data *data)
 	i = 0;
 	length = args_length(args);
 	if (length != 3)
+	{
+		free_args(length, args);
 		error_function("Error\n invalid rgb: should have only 3 values\n", data);
+	}
 	i = 0;
 	while(args[i])
 	{
 		value = ft_atoi_improved(args[i], &flag);
 		if ((value > 255 || value < 0))
+		{
+			free_args(length, args);
 			error_function("Error\n invalid rgb: values should be between 0 and 255\n", data);
+		}
 		i++;
 	}
+	free_args(length, args);
 }
 
 void	check_path_and_rgb_values(t_data *data)
@@ -224,9 +247,13 @@ void check_first_letters_and_assign(char *ptr, t_data *data)
 	else if ((args[0][0] == 'E' && args[0][1] == 'A') && length == 2 && data->EA == NULL)
 		data->EA = ft_strdup(args[1]);
 	else
+	{
+		free_args(3, args);
+		free(ptr);
 		error_function("Error\n invalid map input 2\n", data);
+	}
 	data->parameters_count++;
-	(free(args[0]), free(args[1]), free(args));
+	free_args(3, args);
 }
 
 void	intializing_textures_path(int fd, t_data *data)
@@ -246,7 +273,10 @@ void	intializing_textures_path(int fd, t_data *data)
 		{
 			word_count = count_words(ptr);
 			if (word_count != 2)
+			{
+				free(ptr);
 				error_function("Error\n invalid map input 1\n", data);
+			}
 			check_first_letters_and_assign(ptr, data);
 		}
 		free(ptr);

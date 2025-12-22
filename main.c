@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:06:28 by mmaarafi          #+#    #+#             */
-/*   Updated: 2025/12/22 11:04:33 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/12/22 15:38:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	main(int ac, char **av)
 	}
 	intializing_all_variables(&data);
 	reading_map_file(av[1], data);
-	mlx_image_to_window(data->mlx, data->img, 0, 0);
-	mlx_loop_hook(data->mlx, &move, data);
-	mlx_loop(data->mlx);
+	// mlx_image_to_window(data->mlx, data->img, 0, 0);
+	// mlx_loop_hook(data->mlx, &move, data);
+	// mlx_loop(data->mlx);
+	free_everything(data);
 }

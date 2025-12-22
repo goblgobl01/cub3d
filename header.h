@@ -8,7 +8,7 @@
 #include <limits.h>
 #include <float.h>
 #include <unistd.h>
-#include "MLX42/include/MLX42/MLX42.h"
+// #include "MLX42/include/MLX42/MLX42.h"
 #define screenWidth 1280
 #define screenHeight 720
 #define MOVE_SPEED 0.05
@@ -25,6 +25,7 @@ typedef struct s_struct
 	char			*F;
 	char			*C;
 	char			player_direction;
+	int				map_fd;
 	int				parameters_count;
 	int				player_count;
 	int				starting_position_x;
@@ -53,13 +54,13 @@ typedef struct s_struct
 	int				draw_start;
 	int				draw_end;
 	int				line_height;
-	mlx_image_t		*img;
-	mlx_t			*mlx;
-	mlx_texture_t	*NO_Texture;
-	mlx_texture_t	*SO_Texture;
-	mlx_texture_t	*WE_Texture;
-	mlx_texture_t	*EA_Texture;
-	mlx_texture_t	*Texture;
+	// mlx_image_t		*img;
+	// mlx_t			*mlx;
+	// mlx_texture_t	*NO_Texture;
+	// mlx_texture_t	*SO_Texture;
+	// mlx_texture_t	*WE_Texture;
+	// mlx_texture_t	*EA_Texture;
+	// mlx_texture_t	*Texture;
 	int				tex_x;
 	int				tex_y;
 }t_data;

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 11:02:10 by mmaarafi          #+#    #+#             */
-/*   Updated: 2025/10/21 18:53:47 by codespace        ###   ########.fr       */
+/*   Updated: 2025/12/22 12:09:40 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_list
 }t_list;
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4
+#  define BUFFER_SIZE 1
 
 # endif
 
