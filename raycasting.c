@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 00:54:33 by codespace         #+#    #+#             */
-/*   Updated: 2025/12/04 16:45:31 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/12/04 15:50:26 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,5 @@ void raycasting(t_data *data)
 		x++;
 	}
 	// printf("end x ->%d s w  %d\n", x, screenWidth);
-	mlx_image_to_window(data->mlx, data->img, 0 , 0);
+	// mlx_image_to_window(data->mlx, data->img, 0 , 0);
 }
