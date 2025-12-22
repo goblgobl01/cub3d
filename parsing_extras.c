@@ -134,6 +134,11 @@ void	intializing_all_variables(t_data **data)
 	(*data)->map_height = 0;
 	(*data)->parameters_count = 0;
 	(*data)->player_count = 0;
+	// lines added by youssef:
+	(*data)->NO_Texture = mlx_load_png("Drawing.png");
+	(*data)->SO_Texture = mlx_load_png("Drawing.png");
+	(*data)->WE_Texture = mlx_load_png("Drawing.png");
+	(*data)->EA_Texture = mlx_load_png("Drawing.png");
 }
 void check_texture(char *str, t_data *data)
 {

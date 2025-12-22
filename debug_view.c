@@ -128,15 +128,10 @@
 //                 data->map_y += data->step_y;
 //                 data->side = 1;
 //             }
-//             // Simple bounds check to prevent crash if ray leaves map
-//             if (data->map_y < 0 || data->map_y >= (int)data->map_height || data->map_x < 0) 
+//             if (data->map[data->map_y][data->map_x] != '0')
 //             {
-//                 data->hit = 1; 
-//             }
-//             else if (data->map[data->map_y][data->map_x] != '0' && 
-//                      !ft_strchr("NSWE", data->map[data->map_y][data->map_x]))
-//             {
-//                 data->hit = 1;
+//                 printf("y is: %d\nx is: %d\nsquare content: %c\nray: %d\n",data->map_y, data->map_x, data->map[data->map_y][data->map_x], x);
+// 				data->hit = 1;
 //             }
 //         }
 //         if(data->side == 0)
