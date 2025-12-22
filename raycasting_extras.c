@@ -6,7 +6,7 @@
 /*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 06:19:24 by codespace         #+#    #+#             */
-/*   Updated: 2025/12/04 18:12:28 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/12/22 10:10:06 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,8 @@ void	intializing_raycasting_variables(t_data *data)
 	data->map[data->starting_position_y][data->starting_position_x] = '0';
 	data->mlx = mlx_init(screenWidth, screenHeight, "CUB3D", 0);
 	data->img = mlx_new_image(data->mlx, screenWidth, screenHeight);
+	data->NO_Texture = mlx_load_png(data->NO);
+	data->SO_Texture = mlx_load_png(data->SO);
+	data->WE_Texture = mlx_load_png(data->WE);
+	data->EA_Texture = mlx_load_png(data->EA);
 }

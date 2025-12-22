@@ -9,8 +9,10 @@
 #include <float.h>
 #include <unistd.h>
 #include "MLX42/include/MLX42/MLX42.h"
-#define screenWidth 1000
-#define screenHeight 1000
+#define screenWidth 1280
+#define screenHeight 720
+#define MOVE_SPEED 0.05
+#define ROTATION 0.05
 
 typedef struct s_struct
 {
@@ -53,8 +55,6 @@ typedef struct s_struct
 	int				line_height;
 	mlx_image_t		*img;
 	mlx_t			*mlx;
-	FILE			*fptr;
-	// lines added by youssef:
 	mlx_texture_t	*NO_Texture;
 	mlx_texture_t	*SO_Texture;
 	mlx_texture_t	*WE_Texture;
@@ -79,4 +79,5 @@ void	wall(t_data *data, int x);
 void	floor_r(t_data *data, int x);
 void	debug_view(t_data *data);
 void	initialize_parameters(int x, t_data *data);
+void	move(void *param);
 #endif

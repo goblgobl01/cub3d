@@ -6,10 +6,10 @@ LIBFT_DIR   = ./includes/libft
 LIBFT       = $(LIBFT_DIR)/libft.a
 LIBFT_SRCS  = $(wildcard $(LIBFT_DIR)/*.c)
 
-SRC         = main.c parsing.c raycasting.c rendering.c parsing_extras.c raycasting_extras.c debug_view.c
+SRC         = main.c parsing.c raycasting.c rendering.c parsing_extras.c raycasting_extras.c movement.c
 OBJ         = $(SRC:.c=.o)
 
-CFLAGS      = -Wall -Wextra -Werror -fsanitize=address -g -I. -IMLX42/include
+CFLAGS      = -Wall -Wextra -Werror -I. -IMLX42/include #-fsanitize=address -g 
 CC          = cc
 
 MLX         = ./MLX42/build/libmlx42.a

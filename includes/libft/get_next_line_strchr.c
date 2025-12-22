@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_strchr.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 10:57:42 by mmaarafi          #+#    #+#             */
-/*   Updated: 2025/10/17 17:34:40 by codespace        ###   ########.fr       */
+/*   Updated: 2025/12/22 10:11:38 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 char	*my_strchr(const char *s, int c)
 {
 	size_t	i;
-	// int		length;
 
 	if (!s)
 		return (NULL);
-	// length = ft_strlen(s);
 	i = 0;
 	while (i <= ft_strlen(s))
 	{

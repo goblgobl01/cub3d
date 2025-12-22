@@ -6,7 +6,7 @@
 /*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 18:41:23 by codespace         #+#    #+#             */
-/*   Updated: 2025/11/20 22:42:44 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/12/22 10:09:44 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,11 +134,6 @@ void	intializing_all_variables(t_data **data)
 	(*data)->map_height = 0;
 	(*data)->parameters_count = 0;
 	(*data)->player_count = 0;
-	// lines added by youssef:
-	(*data)->NO_Texture = mlx_load_png("Drawing.png");
-	(*data)->SO_Texture = mlx_load_png("Drawing.png");
-	(*data)->WE_Texture = mlx_load_png("Drawing.png");
-	(*data)->EA_Texture = mlx_load_png("Drawing.png");
 }
 void check_texture(char *str, t_data *data)
 {
@@ -172,23 +167,15 @@ void check_rgb_values(char *str, t_data *data)
 	flag = 0;
 	args = another_split(str, ",");
 	i = 0;
-	// while(args[i])
-	// {
-	// 	printf("%s\n",args[i]);
-	// 	i++;
-	// }
-	// printf("this is str: %s\n", str);
 	length = args_length(args);
-	// printf("length : %d\n", length);
 	if (length != 3)
 		error_function("Error\n invalid rgb: should have only 3 values\n", data);
 	i = 0;
 	while(args[i])
 	{
 		value = ft_atoi_improved(args[i], &flag);
-		// printf("value : %d\n", value);
 		if ((value > 255 || value < 0))
-			error_function("Error\n invalid rgb: values should be between 0 and 255->1\n", data);
+			error_function("Error\n invalid rgb: values should be between 0 and 255\n", data);
 		i++;
 	}
 }
