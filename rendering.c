@@ -6,11 +6,11 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 17:22:24 by ytlidi            #+#    #+#             */
-/*   Updated: 2025/12/22 16:05:09 by codespace        ###   ########.fr       */
+/*   Updated: 2025/12/22 16:09:45 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "header.h"
+#include "header.h"
 
 uint32_t	get_pixel(t_data *data, int x, int y)
 {
