@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 14:41:04 by codespace         #+#    #+#             */
-/*   Updated: 2025/12/22 15:34:06 by codespace        ###   ########.fr       */
+/*   Updated: 2025/12/22 16:58:21 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,6 +204,6 @@ void reading_map_file(char *str, t_data *data)
 	intializing_textures_path(data->map_fd, data);
 	parse_the_map(data);
 	map_checking(data);
-	// intializing_raycasting_variables(data);
-	// raycasting(data);
+	intializing_raycasting_variables(data);
+	raycasting(data);
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 17:22:24 by ytlidi            #+#    #+#             */
-/*   Updated: 2025/12/22 15:41:29 by codespace        ###   ########.fr       */
+/*   Updated: 2025/12/22 16:57:46 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "header.h"
+#include "header.h"
 
 uint32_t	get_pixel(t_data *data, int x, int y)
 {

@@ -9,7 +9,7 @@ LIBFT_SRCS  = $(wildcard $(LIBFT_DIR)/*.c)
 SRC         = main.c parsing.c raycasting.c rendering.c parsing_extras.c raycasting_extras.c movement.c leaks.c
 OBJ         = $(SRC:.c=.o)
 
-CFLAGS      = -Wall -Wextra -Werror -g #-I. -IMLX42/include -fsanitize=address
+CFLAGS      = -Wall -Wextra -Werror -fsanitize=address -g -I. -IMLX42/include
 CC          = cc
 
 MLX         = ./MLX42/build/libmlx42.a
@@ -25,8 +25,15 @@ all: $(NAME)
 
 # Build cub3D
 $(NAME): $(OBJ) $(LIBFT) header.h
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
-#$(LFLAGS) $(MLX)
+	@if find . -name "libmlx42.a" | grep -q .; then \
+		echo "$(GRN)mlx found$(RESET)"; \
+	else \
+		echo "$(YEL)MLX42 not found, setting it up...$(RESET)"; \
+		rm -rf MLX42; \
+		git clone https://github.com/codam-coding-college/MLX42.git; \
+		cd MLX42 && cmake -B build && cmake --build build; \
+	fi
+	$(CC) $(CFLAGS) $(OBJ) $(MLX) $(LIBFT) $(LFLAGS) -o $(NAME)
 
 # Build libft
 $(LIBFT):
@@ -43,9 +50,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: clean fclean re all
-
-
-# cc -Wall -Wextra -Werror -fsanitize=address -g -I. -IMLX42/include main.o parsing.o raycasting.o rendering.o parsing_extras.o raycasting_extras.o ./MLX42/build/libmlx42.a -framework Cocoa -framework OpenGL -framework IOKit -L ~/.brew/opt/glfw/lib -lglfw -o cub3D
-# ld: warning: directory not found for option '-L/Users/mmaarafi/.brew/opt/glfw/lib'
-# ld: library not found for -lglfw
-# clang: error: linker command failed with exit code 1 (use -v to see invocation)
