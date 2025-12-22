@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_strchr.c                             :+:      :+:    :+:   */
+/*   leaks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/13 10:57:42 by mmaarafi          #+#    #+#             */
-/*   Updated: 2025/12/22 10:11:38 by mmaarafi         ###   ########.fr       */
+/*   Created: 2025/12/22 11:41:36 by mmaarafi          #+#    #+#             */
+/*   Updated: 2025/12/22 11:42:44 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "header.h"
 
-char	*my_strchr(const char *s, int c)
+void leaks(t_data *data)
 {
-	size_t	i;
-
-	if (!s)
-		return (NULL);
-	i = 0;
-	while (i <= ft_strlen(s))
-	{
-		if (s[i] == (char)c)
-			return ((char *)(s + i));
-		i++;
-	}
-	return (NULL);
+	(void) data;
 }

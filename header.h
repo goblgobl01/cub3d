@@ -9,8 +9,10 @@
 #include <float.h>
 #include <unistd.h>
 #include "MLX42/include/MLX42/MLX42.h"
-#define screenWidth 1000
-#define screenHeight 1000
+#define screenWidth 1280
+#define screenHeight 720
+#define MOVE_SPEED 0.05
+#define ROTATION 0.05
 
 typedef struct s_struct
 {
@@ -53,8 +55,6 @@ typedef struct s_struct
 	int				line_height;
 	mlx_image_t		*img;
 	mlx_t			*mlx;
-	FILE			*fptr;
-	// lines added by youssef:
 	mlx_texture_t	*NO_Texture;
 	mlx_texture_t	*SO_Texture;
 	mlx_texture_t	*WE_Texture;
@@ -64,19 +64,25 @@ typedef struct s_struct
 	int				tex_y;
 }t_data;
 
-void	free_everything(t_data *data);
-int		checking_arguments(char *str);
-void	intializing_all_variables(t_data **data);
-void	error_function(char *str, t_data *data);
-void	reading_map_file(char *str, t_data *data);
-void	intializing_textures_path(int fd, t_data *data);
-int		check_empty_lines(char *ptr);
-void	raycasting(t_data *data);
-void	intializing_raycasting_variables(t_data *data);
-void	wall_height(t_data *data);
-void	ceiling(t_data *data, int x);
-void	wall(t_data *data, int x);
-void	floor_r(t_data *data, int x);
-void	debug_view(t_data *data);
-void	initialize_parameters(int x, t_data *data);
+void		free_everything(t_data *data);
+int			checking_arguments(char *str);
+void		intializing_all_variables(t_data **data);
+void		error_function(char *str, t_data *data);
+void		reading_map_file(char *str, t_data *data);
+void		intializing_textures_path(int fd, t_data *data);
+int			check_empty_lines(char *ptr);
+void		raycasting(t_data *data);
+void		intializing_raycasting_variables(t_data *data);
+void		wall_height(t_data *data);
+void		ceiling(t_data *data, int x);
+void		wall(t_data *data, int x);
+void		floor_r(t_data *data, int x);
+void		debug_view(t_data *data);
+void		initialize_parameters(int x, t_data *data);
+void		move(void *param);
+void		print_wall(t_data *data, int x);
+void		calculating_tex_x(t_data *data);
+uint32_t	get_pixel(t_data *data, int x, int y);
+void		leaks(t_data *data);
+
 #endif

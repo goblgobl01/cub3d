@@ -6,15 +6,15 @@ LIBFT_DIR   = ./includes/libft
 LIBFT       = $(LIBFT_DIR)/libft.a
 LIBFT_SRCS  = $(wildcard $(LIBFT_DIR)/*.c)
 
-SRC         = main.c parsing.c raycasting.c rendering.c parsing_extras.c raycasting_extras.c debug_view.c
+SRC         = main.c parsing.c raycasting.c rendering.c parsing_extras.c raycasting_extras.c movement.c leaks.c
 OBJ         = $(SRC:.c=.o)
 
-CFLAGS      = -Wall -Wextra -Werror -fsanitize=address -g #-I. -IMLX42/include
+CFLAGS      = -Wall -Wextra -Werror -I. -IMLX42/include #-fsanitize=address -g 
 CC          = cc
 
-# MLX         = ./MLX42/build/libmlx42.a
-# LFLAGS      = -framework Cocoa -framework OpenGL -framework IOKit \
-#               -L ~/.brew/opt/glfw/lib/ -lglfw
+MLX         = ./MLX42/build/libmlx42.a
+LFLAGS      = -framework Cocoa -framework OpenGL -framework IOKit \
+              -L ~/.brew/opt/glfw/lib/ -lglfw
 
 RED         = \033[0;31m
 GRN         = \033[0;32m
@@ -33,7 +33,7 @@ $(NAME): $(OBJ) $(LIBFT) header.h
 		git clone https://github.com/codam-coding-college/MLX42.git; \
 		cd MLX42 && cmake -B build && cmake --build build; \
 	fi
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(MLX) $(LIBFT) $(LFLAGS) -o $(NAME)
 
 # Build libft
 $(LIBFT):

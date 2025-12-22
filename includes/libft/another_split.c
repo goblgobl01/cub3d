@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   another_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 18:52:46 by codespace         #+#    #+#             */
-/*   Updated: 2025/10/21 19:04:31 by codespace        ###   ########.fr       */
+/*   Updated: 2025/12/22 10:11:23 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int inside_charset(char c, char *charset)
 static int count_words(char *str, char *charset)
 {
 	int i = 0;
-	int count = 1; // Start with 1 to count the segment before the first delimiter
+	int count = 1;
 
 	if (!str || !*str)
 		return (0);
@@ -60,7 +60,6 @@ static void allocate_duplicate(char *str, char *charset, char **strs)
 		else
 			i++;
 	}
-	// Add the last element (can be empty if string ends with a delimiter)
 	strs[k] = malloc((i - start) + 1);
 	ft_memcpy(strs[k], str + start, i - start);
 	strs[k][i - start] = '\0';

@@ -6,7 +6,7 @@
 /*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 14:41:04 by codespace         #+#    #+#             */
-/*   Updated: 2025/11/21 02:09:03 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/12/22 10:09:58 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,11 +203,10 @@ void reading_map_file(char *str, t_data *data)
 
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
-		return (write(2, "Error\n", 6), free(data), exit(1), (void)0);
+		return (write(2, "Error\n explicit error", 21), free(data), exit(1), (void)0);
 	intializing_textures_path(fd, data);
 	parse_the_map(fd, data);
 	map_checking(data);
-	// line added by youssef:
 	intializing_raycasting_variables(data);
 	raycasting(data);
 }

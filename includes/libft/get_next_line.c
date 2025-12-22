@@ -6,7 +6,7 @@
 /*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 14:26:53 by mmaarafi          #+#    #+#             */
-/*   Updated: 2025/10/13 11:51:32 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/12/22 10:11:51 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,8 @@ char	*read_line(char *stash, int buffer_size, int fd)
 		if (read_return == 0)
 			break ;
 		buffer[read_return] = 0;
-		// printf("this is buffer: %s\n", buffer);
 		stash = my_strjoin(stash, buffer);
 	}
-	// printf("this is stash on readline: %s\n", stash);
 	return (free(buffer), stash);
 }
 
@@ -119,9 +117,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	// printf("this fd on get next line: %d\n", fd);
 	stash = read_line(stash, BUFFER_SIZE, fd);
-	// printf("this is stash: %s\n", stash);
 	if (!stash)
 		return (NULL);
 	line = returned_line(stash, "\n");
