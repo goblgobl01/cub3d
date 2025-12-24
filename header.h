@@ -61,6 +61,8 @@ typedef struct s_struct
 	mlx_texture_t	*WE_Texture;
 	mlx_texture_t	*EA_Texture;
 	mlx_texture_t	*Texture;
+	int				FloorColor;
+	int				CeilingColor;
 	int				tex_x;
 	int				tex_y;
 }t_data;
@@ -96,6 +98,8 @@ void		check_texture(char *str, t_data *data);
 int			args_length(char **args);
 void		free_args(int length, char **args);
 int			calculating_map_height(char **map);
+int			rgb2int(char *str);
+uint32_t	get_pixel(t_data *data, int x, int y);
 // void		leaks(t_data *data);
 
 #endif

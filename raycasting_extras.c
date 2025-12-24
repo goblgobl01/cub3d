@@ -6,7 +6,7 @@
 /*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 06:19:24 by codespace         #+#    #+#             */
-/*   Updated: 2025/12/24 10:32:19 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/12/24 15:15:54 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,6 @@ void	intializing_raycasting_variables(t_data *data)
 	data->SO_Texture = mlx_load_png(data->SO);
 	data->WE_Texture = mlx_load_png(data->WE);
 	data->EA_Texture = mlx_load_png(data->EA);
+	data->FloorColor = rgb2int(data->F);
+	data->CeilingColor = rgb2int(data->C);
 }

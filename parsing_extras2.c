@@ -6,7 +6,7 @@
 /*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 09:37:17 by mmaarafi          #+#    #+#             */
-/*   Updated: 2025/12/24 10:17:26 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/12/24 15:13:39 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ void	intializing_all_variables(t_data **data)
 	(*data)->parameters_count = 0;
 	(*data)->player_count = 0;
 	(*data)->map_fd = -1;
+	(*data)->EA_Texture = NULL;
+	(*data)->WE_Texture = NULL;
+	(*data)->SO_Texture = NULL;
+	(*data)->NO_Texture = NULL;
+	(*data)->img = NULL;
+	(*data)->mlx = NULL;
 }
 
 void	check_texture(char *str, t_data *data)

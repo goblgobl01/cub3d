@@ -6,7 +6,7 @@
 /*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 09:32:36 by mmaarafi          #+#    #+#             */
-/*   Updated: 2025/12/24 09:39:50 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/12/24 15:12:34 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ void	free_everything_stage_2(t_data *data)
 		free (data->F);
 	if (data->C)
 		free (data->C);
+	if (data->img)
+		mlx_delete_image(data->mlx, data->img);
+	if (data->NO_Texture)
+		mlx_delete_texture(data->NO_Texture);
+	if (data->NO_Texture)
+		mlx_delete_texture(data->SO_Texture);
 }
 
 void	free_everything_stage_1(t_data *data)
@@ -57,6 +63,12 @@ void	free_everything_stage_1(t_data *data)
 	if (data->map_fd != -1)
 		close(data->map_fd);
 	free_everything_stage_2(data);
+	if (data->NO_Texture)
+		mlx_delete_texture(data->WE_Texture);
+	if (data->NO_Texture)
+		mlx_delete_texture(data->EA_Texture);
+	if (data->mlx)
+		mlx_terminate(data->mlx);
 	if (data)
 		free(data);
 }

@@ -6,7 +6,7 @@
 /*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 10:24:56 by mmaarafi          #+#    #+#             */
-/*   Updated: 2025/12/24 10:43:52 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/12/24 15:03:22 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,7 @@ void	move(void *param)
 		apply_rotation(data, -ROTATION);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
 		apply_rotation(data, ROTATION);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(data->mlx);
 	raycasting(data);
 }

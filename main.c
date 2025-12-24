@@ -6,17 +6,16 @@
 /*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:06:28 by mmaarafi          #+#    #+#             */
-/*   Updated: 2025/12/24 09:41:00 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/12/24 15:21:32 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-// void leaks(void) {
-// 	system("leaks cub3D");
-// }
+void leaks(void) {
+	system("leaks cub3D");
+}
 
-// atexit(leaks);
 
 int	calculating_map_height(char **map)
 {
@@ -31,7 +30,8 @@ int	calculating_map_height(char **map)
 int	main(int ac, char **av)
 {
 	t_data	*data;
-
+	
+	atexit(leaks);
 	if (ac != 2 || !checking_arguments(av[1]))
 	{
 		write(2, "Error\n invalid_arguments\n", 25);

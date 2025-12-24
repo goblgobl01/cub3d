@@ -6,10 +6,10 @@ LIBFT_DIR   = ./includes/libft
 LIBFT       = $(LIBFT_DIR)/libft.a
 LIBFT_SRCS  = $(wildcard $(LIBFT_DIR)/*.c)
 
-SRC         = main.c parsing.c raycasting.c rendering.c parsing_extras.c raycasting_extras.c movement.c parsing_extras0.c parsing_extras1.c parsing_extras2.c#leaks.c
+SRC         = main.c parsing.c raycasting.c rendering.c parsing_extras.c raycasting_extras.c movement.c parsing_extras0.c parsing_extras1.c parsing_extras2.c RGBtoINT.c
 OBJ         = $(SRC:.c=.o)
 
-CFLAGS      = -Wall -Wextra -Werror -I. -IMLX42/include #-fsanitize=address -g
+CFLAGS      = -Wall -Wextra -Werror -I. -IMLX42/include # -fsanitize=address -g
 CC          = cc
 
 MLX         = ./MLX42/build/libmlx42.a
