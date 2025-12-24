@@ -28,10 +28,10 @@ typedef struct s_struct
 	int				map_fd;
 	int				parameters_count;
 	int				player_count;
-	int				starting_position_x;
-	int				starting_position_y;
-	double			position_x;
-	double			position_y;
+	int				starting_x;
+	int				starting_y;
+	double			pos_x;
+	double			pos_y;
 	double			dir_x;
 	double			dir_y;
 	double			plane_x;
@@ -43,8 +43,8 @@ typedef struct s_struct
 	int				map_y;
 	double			side_dist_x;
 	double			side_dist_y;
-	double			delta_dist_x;
-	double			delta_dist_y;
+	double			delta_x;
+	double			delta_y;
 	double			perp_wall_dist;
 	int				step_x;
 	int				step_y;
@@ -65,7 +65,7 @@ typedef struct s_struct
 	int				tex_y;
 }t_data;
 
-void		free_everything(t_data *data);
+void		free_everything_stage_1(t_data *data);
 int			checking_arguments(char *str);
 void		intializing_all_variables(t_data **data);
 void		error_function(char *str, t_data *data);
@@ -84,6 +84,18 @@ void		move(void *param);
 void		print_wall(t_data *data, int x);
 void		calculating_tex_x(t_data *data);
 uint32_t	get_pixel(t_data *data, int x, int y);
-void		leaks(t_data *data);
+char		*strcatt(char *dest, const char *src);
+char		*strjoinn(char *stash, char *buffer);
+int			is_valid_character(char c, t_data *data);
+int			characters_checking(char *str, t_data *data);
+void		parse_the_map(t_data *data);
+int			count_words(char *str);
+int			inside_charset(char c);
+int			checking_arguments(char *str);
+void		check_texture(char *str, t_data *data);
+int			args_length(char **args);
+void		free_args(int length, char **args);
+int			calculating_map_height(char **map);
+// void		leaks(t_data *data);
 
 #endif

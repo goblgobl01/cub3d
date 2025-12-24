@@ -6,7 +6,7 @@
 /*   By: mmaarafi <mmaarafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:06:28 by mmaarafi          #+#    #+#             */
-/*   Updated: 2025/12/22 17:01:38 by mmaarafi         ###   ########.fr       */
+/*   Updated: 2025/12/24 09:41:00 by mmaarafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,22 @@
 // 	system("leaks cub3D");
 // }
 
+// atexit(leaks);
+
+int	calculating_map_height(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	*data;
 
-	// atexit(leaks);
 	if (ac != 2 || !checking_arguments(av[1]))
 	{
 		write(2, "Error\n invalid_arguments\n", 25);
@@ -37,5 +48,5 @@ int	main(int ac, char **av)
 	mlx_image_to_window(data->mlx, data->img, 0, 0);
 	mlx_loop_hook(data->mlx, &move, data);
 	mlx_loop(data->mlx);
-	free_everything(data);
+	free_everything_stage_1(data);
 }
